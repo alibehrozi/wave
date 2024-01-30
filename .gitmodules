@@ -1,0 +1,3 @@
+[submodule "app/src/main/cpp/libs/libusb"]
+	path = app/src/main/cpp/libs/libusb
+	url = https://github.com/libusb/libusb-cmake.git
