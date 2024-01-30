@@ -13,6 +13,14 @@
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.hardware.usb.host" />
+
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="true" />
+    <uses-feature
+        android:name="android.permission.HARDWARE_TEST"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -33,6 +41,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter android:label="USB Device Actions">
+                <action android:name="com.android.example.USB_PERMISSION" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+                <action android:name="android.hardware.usb.action.USB_ACCESSORY_DETACHED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+                android:resource="@xml/device_filter" />
         </activity>
 
         <uses-library
