@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- list of USB devices to interact with -->
+
+    <!-- hackrf-jawbreaker -->
+    <usb-device
+        product-id="604b"
+        vendor-id="1d50" />
+
+    <!-- hackrf-one -->
+    <usb-device
+        product-id="6089"
+        vendor-id="1d50" />
+
+    <!-- rad1o -->
+    <usb-device
+        product-id="cc15"
+        vendor-id="1d50" />
+
+    <!-- nxp-dfu -->
+    <usb-device
+        product-id="000c"
+        vendor-id="1fc9" />
+
 </resources>
