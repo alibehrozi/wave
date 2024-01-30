@@ -1,0 +1,25 @@
+# Built application files
+*.apk
+*.ap_
+*.so
+*.a
+
+# Gradle files
+/build/
+.gradle/
+
+# Android Studio IDE specific files
+*.iml
+.idea/
+
+# Build/Generated files and folders
+/bin/
+/gen/
+
+# Logs and other temporary files
+*.log
+*.tmp
+*.temp
+
+# Keys and password managers
+*.keystore
