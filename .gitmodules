@@ -1,3 +1,6 @@
 [submodule "app/src/main/cpp/libs/libusb"]
 	path = app/src/main/cpp/libs/libusb
 	url = https://github.com/libusb/libusb-cmake.git
+[submodule "app/src/main/cpp/libs/libhackrf"]
+	path = app/src/main/cpp/libs/libhackrf
+	url = https://github.com/alibehrozi/hackrf.git
