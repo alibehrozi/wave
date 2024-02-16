@@ -17,6 +17,8 @@ add_subdirectory(libs/libhackrf/host/libhackrf)
 
 set(libwave wave)
 add_library(${libwave} SHARED
+        ${CMAKE_CURRENT_SOURCE_DIR}/HackRFTransfer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/HackRFWrapper.cpp
         test.c)
 
 target_include_directories(${libwave} PRIVATE

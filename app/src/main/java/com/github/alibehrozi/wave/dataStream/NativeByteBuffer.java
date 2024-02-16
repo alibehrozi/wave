@@ -642,6 +642,6 @@ public class NativeByteBuffer extends AbstractSerializedData {
     static native long limit(long address);
     static native long position(long address);
     static native void reuse(long address);
-    static native void setJava(boolean useJavaByteBuffers);
+    public static native void setJava(boolean useJavaByteBuffers);
 
 }
