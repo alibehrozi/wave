@@ -7,30 +7,30 @@ static JavaVM *java;
 
 extern "C" {
 
-jlong Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_getFreeBuffer
+JNIEXPORT jlong JNICALL Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_getFreeBuffer
         (JNIEnv *env, jclass object, jint length) {
     return (jlong) (intptr_t) BuffersStorage::getInstance().getFreeBuffer((uint32_t) length);
 }
 
-jlong Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_limit
+JNIEXPORT jlong JNICALL Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_limit
         (JNIEnv *env, jclass object, jlong address) {
     auto *buffer = (NativeByteBuffer *) (intptr_t) address;
     return buffer->limit();
 }
 
-jlong Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_position
+JNIEXPORT jlong JNICALL Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_position
         (JNIEnv *env, jclass object, jlong address) {
     auto *buffer = (NativeByteBuffer *) (intptr_t) address;
     return buffer->position();
 }
 
-void Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_reuse
+JNIEXPORT void JNICALL Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_reuse
         (JNIEnv *env, jclass object, jlong address) {
     auto *buffer = (NativeByteBuffer *) (intptr_t) address;
     buffer->reuse();
 }
 
-jobject Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_getJavaByteBuffer
+JNIEXPORT jobject JNICALL Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_getJavaByteBuffer
         (JNIEnv *env, jclass object, jlong address) {
     auto *buffer = (NativeByteBuffer *) (intptr_t) address;
     if (buffer == nullptr) {
@@ -39,7 +39,7 @@ jobject Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_getJavaByteB
     return buffer->getJavaByteBuffer();
 }
 
-void Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_setJava
+JNIEXPORT void JNICALL Java_com_github_alibehrozi_wave_dataStream_NativeByteBuffer_setJava
         (JNIEnv *env, jclass object, jboolean useJavaByteBuffers) {
     env->GetJavaVM(&java);
     NativeByteBuffer::useJavaVM(java, useJavaByteBuffers);
