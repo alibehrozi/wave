@@ -16,10 +16,7 @@ import java.util.zip.ZipFile;
 public class NativeLoader {
 
     private static final String TAG = "NativeLoader";
-//    private final static String LIB_SO_NAME = "lib" + LIB_NAME + ".so";
-//    private final static String LOCALE_LIB_SO_NAME = "lib" + LIB_NAME + "loc.so";
 
-    private static volatile boolean nativeLoaded = false;
     public static StringBuilder log = new StringBuilder();
 
     private static File getNativeLibraryDir(Context context) {
@@ -77,7 +74,6 @@ public class NativeLoader {
 
             try {
                 System.load(destLocalFile.getAbsolutePath());
-                nativeLoaded = true;
             } catch (Error e) {
                 Log.e(TAG, e.getMessage());
             }
@@ -105,14 +101,10 @@ public class NativeLoader {
 
     @SuppressLint("UnsafeDynamicallyLoadedCode")
     public static synchronized void initNativeLibs(Context context, String LIB_NAME) {
-        if (nativeLoaded) {
-            return;
-        }
 
         try {
             try {
                 System.loadLibrary(LIB_NAME);
-                nativeLoaded = true;
                 Log.d(TAG, "loaded normal lib");
                 return;
             } catch (Error e) {
@@ -147,7 +139,6 @@ public class NativeLoader {
                     Log.d(TAG, "Load local lib");
 
                     System.load(destLocalFile.getAbsolutePath());
-                    nativeLoaded = true;
                     return;
                 } catch (Error e) {
                     log.append(e).append("\n");
@@ -168,7 +159,6 @@ public class NativeLoader {
 
         try {
             System.loadLibrary(LIB_NAME);
-            nativeLoaded = true;
         } catch (Error e) {
             Log.e(TAG, e.getMessage());
             log.append("184: ").append(e).append("\n");
@@ -206,9 +196,4 @@ public class NativeLoader {
         }
         return folder;
     }
-
-    public static boolean loaded() {
-        return nativeLoaded;
-    }
-    //public static native void crash();
 }
