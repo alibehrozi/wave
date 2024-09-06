@@ -203,61 +203,6 @@ public class Hackrf {
      */
     public static native boolean isAntennaEnable();
 
-    /**
-     * Convert @ref hackrf_error into human-readable string
-     *
-     * @param errcode enum to convert
-     * @return human-readable name of error
-     */
-    public static String hackrf_error_name(hackrf_error errcode) {
-        switch (errcode) {
-            case HACKRF_SUCCESS:
-                return "HACKRF_SUCCESS";
-
-            case HACKRF_TRUE:
-                return "HACKRF_TRUE";
-
-            case HACKRF_ERROR_INVALID_PARAM:
-                return "invalid parameter(s)";
-
-            case HACKRF_ERROR_NOT_FOUND:
-                return "HackRF not found";
-
-            case HACKRF_ERROR_BUSY:
-                return "HackRF busy";
-
-            case HACKRF_ERROR_NO_MEM:
-                return "insufficient memory";
-
-            case HACKRF_ERROR_LIBUSB:
-                return "USB error";
-
-            case HACKRF_ERROR_THREAD:
-                return "transfer thread error";
-
-            case HACKRF_ERROR_STREAMING_THREAD_ERR:
-                return "streaming thread encountered an error";
-
-            case HACKRF_ERROR_STREAMING_STOPPED:
-                return "streaming stopped";
-
-            case HACKRF_ERROR_STREAMING_EXIT_CALLED:
-                return "streaming terminated";
-
-            case HACKRF_ERROR_USB_API_VERSION:
-                return "feature not supported by installed firmware";
-
-            case HACKRF_ERROR_NOT_LAST_DEVICE:
-                return "one or more HackRFs still in use";
-
-            case HACKRF_ERROR_OTHER:
-                return "unspecified error";
-
-            default:
-                return "unknown error code";
-        }
-    }
-
     public enum transceiver_mode {
         /**
          * Transceiver is in Off mode (0)
@@ -298,80 +243,127 @@ public class Hackrf {
     }
 
     /**
-     * error enum, returned by many libhackrf functions
+     * Error codes returned by libhackrf functions.
      * <p>
-     * Many functions that are specified to return INT are actually returning this enum
+     * functions that are specified to return int are actually returning these enum values.
      */
     public enum hackrf_error {
 
         /**
-         * no error happened
+         * No error occurred.
          */
-        HACKRF_SUCCESS(0),
+        HACKRF_SUCCESS(0, "HACKRF_SUCCESS"),
+
         /**
-         * TRUE value, returned by some functions that return boolean value. Only a few functions can return this variant, and this fact should be explicitly noted at those functions.
+         * TRUE value, returned by some functions that return a boolean value.
          */
-        HACKRF_TRUE(1),
+        HACKRF_TRUE(1, "HACKRF_TRUE"),
+
         /**
          * The function was called with invalid parameters.
          */
-        HACKRF_ERROR_INVALID_PARAM(-2),
+        HACKRF_ERROR_INVALID_PARAM(-2, "Invalid parameter(s)"),
+
         /**
-         * USB device not found, returned at opening.
+         * USB device not found.
          */
-        HACKRF_ERROR_NOT_FOUND(-5),
+        HACKRF_ERROR_NOT_FOUND(-5, "HackRF not found"),
+
         /**
          * Resource is busy, possibly the device is already opened.
          */
-        HACKRF_ERROR_BUSY(-6),
-        /**
-         * Memory allocation (on host side) failed
-         */
-        HACKRF_ERROR_NO_MEM(-11),
-        /**
-         * LibUSB error, use @ref hackrf_error_name to get a human-readable error string (using `libusb_strerror`)
-         */
-        HACKRF_ERROR_LIBUSB(-1000),
-        /**
-         * Error setting up transfer thread (pthread-related error)
-         */
-        HACKRF_ERROR_THREAD(-1001),
-        /**
-         * Streaming thread could not start due to an error
-         */
-        HACKRF_ERROR_STREAMING_THREAD_ERR(-1002),
-        /**
-         * Streaming thread stopped due to an error
-         */
-        HACKRF_ERROR_STREAMING_STOPPED(-1003),
-        /**
-         * Streaming thread exited (normally)
-         */
-        HACKRF_ERROR_STREAMING_EXIT_CALLED(-1004),
-        /**
-         * The installed firmware does not support this function
-         */
-        HACKRF_ERROR_USB_API_VERSION(-1005),
-        /**
-         * Can not exit library as one or more HackRFs still in use
-         */
-        HACKRF_ERROR_NOT_LAST_DEVICE(-2000),
-        /**
-         * Unspecified error
-         */
-        HACKRF_ERROR_OTHER(-9999);
+        HACKRF_ERROR_BUSY(-6, "HackRF busy"),
 
-        final int errorCode;
+        /**
+         * Memory allocation (on host side) failed.
+         */
+        HACKRF_ERROR_NO_MEM(-11, "Insufficient memory"),
 
-        hackrf_error(int error_code) {
-            this.errorCode = error_code;
+        /**
+         * LibUSB error.
+         */
+        HACKRF_ERROR_LIBUSB(-1000, "USB error"),
+
+        /**
+         * Error setting up transfer thread (pthread-related error).
+         */
+        HACKRF_ERROR_THREAD(-1001, "Transfer thread error"),
+
+        /**
+         * Streaming thread could not start due to an error.
+         */
+        HACKRF_ERROR_STREAMING_THREAD_ERR(-1002, "Streaming thread encountered an error"),
+
+        /**
+         * Streaming thread stopped due to an error.
+         */
+        HACKRF_ERROR_STREAMING_STOPPED(-1003, "Streaming stopped"),
+
+        /**
+         * Streaming thread exited normally.
+         */
+        HACKRF_ERROR_STREAMING_EXIT_CALLED(-1004, "Streaming terminated"),
+
+        /**
+         * The installed firmware does not support this function.
+         */
+        HACKRF_ERROR_USB_API_VERSION(-1005, "Feature not supported by installed firmware"),
+
+        /**
+         * Cannot exit library as one or more HackRFs still in use.
+         */
+        HACKRF_ERROR_NOT_LAST_DEVICE(-2000, "One or more HackRFs still in use"),
+
+        /**
+         * Unspecified error.
+         */
+        HACKRF_ERROR_OTHER(-9999, "Unspecified error");
+
+        private final int code;
+        private final String description;
+
+        hackrf_error(int code, String description) {
+            this.code = code;
+            this.description = description;
+        }
+
+        /**
+         * Get the integer error code.
+         *
+         * @return the error code
+         */
+        public int getCode() {
+            return code;
+        }
+
+        /**
+         * Get a human-readable description of the error.
+         *
+         * @return the description of the error
+         */
+        public String getDescription() {
+            return description;
         }
 
         @NonNull
         @Override
         public String toString() {
-            return hackrf_error_name(this);
+            return description;
+        }
+
+        /**
+         * Get the HackrfError enum from an integer code.
+         *
+         * @param code the error code
+         * @return the corresponding HackrfError enum value
+         */
+        public static hackrf_error fromCode(int code) {
+            for (hackrf_error error : values()) {
+                if (error.code == code) {
+                    return error;
+                }
+            }
+            return HACKRF_ERROR_OTHER; // Default to OTHER if code is not found
         }
     }
-
 }

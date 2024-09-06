@@ -32,7 +32,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wave"
-        tools:targetApi="31">
+        tools:targetApi="34">
 
         <activity
             android:name=".HomeActivity"
@@ -45,7 +45,7 @@
             <intent-filter android:label="USB Device Actions">
                 <action android:name="com.android.example.USB_PERMISSION" />
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-                <action android:name="android.hardware.usb.action.USB_ACCESSORY_DETACHED" />
+                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
             </intent-filter>
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"

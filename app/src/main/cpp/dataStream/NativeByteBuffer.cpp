@@ -22,7 +22,7 @@ NativeByteBuffer::NativeByteBuffer(uint32_t size) {
             exit(1);
         }
         javaByteBuffer = env->CallStaticObjectMethod(jclass_ByteBuffer,
-                                                     jclass_ByteBuffer_allocateDirect,  static_cast<jint>(size));
+                                                     jclass_ByteBuffer_allocateDirect,  size);
         if (javaByteBuffer == nullptr) {
             LOGE("can't create javaByteBuffer");
             exit(1);
@@ -61,7 +61,7 @@ NativeByteBuffer::NativeByteBuffer(uint8_t *buff, uint32_t length) {
 NativeByteBuffer::~NativeByteBuffer() {
 #ifdef ANDROID
     if (javaByteBuffer != nullptr) {
-        JNIEnv *env = 0;
+        JNIEnv *env = nullptr;
         if (javaVm->GetEnv((void **) &env, JNI_VERSION_1_6) != JNI_OK) {
             LOGE("can't get jnienv");
             exit(1);
