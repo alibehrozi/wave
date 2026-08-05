@@ -1,0 +1,10 @@
+<resources>
+    <style name="Theme.Wave" parent="@android:style/Theme.Material.NoActionBar">
+        <!-- Application background -->
+        <item name="android:windowBackground">@color/background</item>
+
+        <!-- Default text appearance -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+</resources>

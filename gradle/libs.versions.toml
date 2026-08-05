@@ -1,0 +1,29 @@
+[versions]
+# Android Gradle Plugin
+agp = "9.3.1"                         # Android Gradle Plugin
+
+# AndroidX Libraries
+activity = "1.13.0"                   # Activity API
+
+# Google Material Design
+material = "1.14.0"                   # Material Design Components
+
+# Testing Libraries
+junit = "4.13.2"                      # JUnit 4
+junitVersion = "1.3.0"                # AndroidX JUnit Extensions
+espressoCore = "3.7.0"                # Espresso UI Testing
+
+[libraries]
+# AndroidX
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+
+# Google
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
