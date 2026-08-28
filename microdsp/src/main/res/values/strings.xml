@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sdr_channel_name">SDR Discovery Service</string>
+    <string name="sdr_channel_desc">Monitors and connects SDR hardware</string>
+    <string name="sdr_app_title">Wave</string>
+    <string name="sdr_action_stop">Stop</string>
+    <string name="sdr_action_disconnect">Disconnect</string>
+</resources>

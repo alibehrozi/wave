@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- HackRF One -->
+    <usb-device vendor-id="7504" product-id="24713" />
+    <!-- HackRF Jawbreaker -->
+    <usb-device vendor-id="7504" product-id="24651" />
+    <!-- rad1o / radio1 -->
+    <usb-device vendor-id="7504" product-id="52245" />
+    <!-- HackRF (DFU Mode / NXP LPC43xx) -->
+    <usb-device vendor-id="8137" product-id="12" />
+    <!-- RTL-SDR (RTL2838) -->
+    <usb-device vendor-id="3034" product-id="10296" />
+    <!-- RTL-SDR (RTL2832U) -->
+    <usb-device vendor-id="3034" product-id="10290" />
+</resources>
+

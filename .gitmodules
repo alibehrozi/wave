@@ -1,0 +1,7 @@
+[submodule "microdsp/src/main/cpp/external/libusb"]
+	path = microdsp/src/main/cpp/external/libusb
+	url = https://github.com/libusb/libusb-cmake.git
+
+[submodule "microdsp/src/main/cpp/external/libhackrf"]
+	path = microdsp/src/main/cpp/external/libhackrf
+	url = https://github.com/greatscottgadgets/hackrf.git
