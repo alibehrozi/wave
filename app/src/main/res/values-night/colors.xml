@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#121212</color>
-    <color name="surface">#1E1E1E</color>
+    <!-- Base App Palette (Dark Theme) -->
+    <color name="background">#0D1117</color>
+    <color name="surface">#161B22</color>
+    <color name="surface_variant">#21262D</color>
+    <color name="dialog_card_bg">#161B22</color>
+    <color name="details_item_bg">#21262D</color>
+    <color name="divider_color">#30363D</color>
 
-    <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#B3B3B3</color>
+    <!-- Typography -->
+    <color name="text_primary">#F0F6FC</color>
+    <color name="text_secondary">#8B949E</color>
+    <color name="text_muted">#6E7681</color>
+    <color name="text_accent">#58A6FF</color>
+
+    <!-- Card & Containers -->
+    <color name="card_bg">#161B22</color>
+    <color name="card_bg_elevated">#21262D</color>
+    <color name="card_stroke">#30363D</color>
+    <color name="card_stroke_highlight">#58A6FF</color>
+    <color name="card_stroke_light">#30363D</color>
+
+    <!-- Chips & Filters -->
+    <color name="chip_bg_unselected">#21262D</color>
+    <color name="chip_bg_selected">#388BFD</color>
+    <color name="chip_text_unselected">#8B949E</color>
+    <color name="chip_text_selected">#FFFFFF</color>
+    <color name="chip_stroke">#30363D</color>
+
+    <!-- Tags & Badges -->
+    <color name="tag_rx_bg">#1A2E40</color>
+    <color name="tag_rx_text">#58A6FF</color>
+    <color name="tag_tx_bg">#3D241E</color>
+    <color name="tag_tx_text">#FF7B72</color>
+    <color name="tag_sec_bg">#341B3B</color>
+    <color name="tag_sec_text">#D2A8FF</color>
+    <color name="tag_scan_bg">#1A382A</color>
+    <color name="tag_scan_text">#7EE787</color>
+
+    <!-- Status Colors -->
+    <color name="status_green">#3FB950</color>
+    <color name="status_badge_bg">#1E2E24</color>
+    <color name="status_badge_border">#403FB950</color>
+    <color name="status_badge_text">#3FB950</color>
+    <color name="status_orange">#D29922</color>
+    <color name="status_red">#F85149</color>
+
+    <!-- Accent Highlights -->
+    <color name="accent_blue">#58A6FF</color>
+    <color name="accent_orange">#FFA657</color>
+    <color name="accent_red">#FF7B72</color>
+    <color name="accent_green">#7EE787</color>
+    <color name="accent_purple">#D2A8FF</color>
+    <color name="accent_teal">#39C5CF</color>
+    <color name="accent_pink">#F778BA</color>
+
+    <!-- Button Updates -->
+    <color name="btn_update_bg">#F9CE2E</color>
+    <color name="btn_update_box_bg">#EABA09</color>
+    <color name="btn_update_text">#0D1117</color>
+
+    <!-- Basic Shades & Alpha -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white_alpha_70">#B3FFFFFF</color>
+    <color name="white_alpha_50">#80FFFFFF</color>
+    <color name="white_alpha_30">#4DFFFFFF</color>
+    <color name="white_alpha_15">#26FFFFFF</color>
+    <color name="white_alpha_10">#1AFFFFFF</color>
 </resources>

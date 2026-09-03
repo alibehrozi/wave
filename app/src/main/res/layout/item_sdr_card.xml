@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="6dp"
+    app:cardBackgroundColor="@color/card_bg"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="3dp"
+    app:cardPreventCornerOverlap="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Banner: Device Image + Floating Glass Badges -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:background="@color/surface_variant">
+
+            <!-- Device Image Render -->
+            <ImageView
+                android:id="@+id/card_device_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="Device image"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hackrf" />
+
+            <!-- Bottom Gradient Scrim Transition -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_card_scrim" />
+
+            <!-- Floating Top-Left Duplex Mode Badge -->
+            <TextView
+                android:id="@+id/card_duplex_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:layout_margin="12dp"
+                android:background="@drawable/bg_pill_glass"
+                android:fontFamily="@font/mitr_bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/accent_blue"
+                android:textSize="11sp"
+                tools:text="Half-Duplex (RX/TX)" />
+
+            <!-- Floating Top-Right Connection Status Badge -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="12dp"
+                android:background="@drawable/bg_pill_glass"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp">
+
+                <ImageView
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
+                    android:layout_marginEnd="6dp"
+                    android:contentDescription="Status indicator"
+                    android:src="@drawable/dot_green" />
+
+                <TextView
+                    android:id="@+id/card_status_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mitr_bold"
+                    android:text="@string/status_ready"
+                    android:textColor="@color/status_green"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <!-- Card Body -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="16dp">
+
+            <!-- Title, Manufacturer & Action Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/card_device_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/mitr_bold"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="19sp"
+                        tools:text="HackRF One" />
+
+                    <TextView
+                        android:id="@+id/card_device_manufacturer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:fontFamily="@font/mitr_regular"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        tools:text="Great Scott Gadgets" />
+
+                </LinearLayout>
+
+                <!-- Action Button: Settings -->
+                <ImageButton
+                    android:id="@+id/card_btn_settings"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/button_icon_circle"
+                    android:contentDescription="@string/action_settings"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_tune"
+                    android:tint="@color/text_secondary" />
+
+                <!-- Action Button: Device Info -->
+                <ImageButton
+                    android:id="@+id/card_btn_info"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/button_icon_circle"
+                    android:contentDescription="@string/action_info"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_info"
+                    android:tint="@color/text_accent" />
+
+            </LinearLayout>
+
+            <!-- Even 3-Column Specifications Grid -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- Stat Column 1: Frequency Range -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_frequency_chip"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="7dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mitr_regular"
+                        android:text="FREQUENCY"
+                        android:textColor="@color/text_muted"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/card_freq_range_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/mitr_bold"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
+                        tools:text="1M - 6.0GHz" />
+                </LinearLayout>
+
+                <!-- Stat Column 2: Max Sample Rate -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_frequency_chip"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="7dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mitr_regular"
+                        android:text="MAX RATE"
+                        android:textColor="@color/text_muted"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/card_sample_rate_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/mitr_bold"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
+                        tools:text="20 MSPS" />
+                </LinearLayout>
+
+                <!-- Stat Column 3: Interface / Bus -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_frequency_chip"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="4dp"
+                    android:paddingVertical="7dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mitr_regular"
+                        android:text="INTERFACE"
+                        android:textColor="@color/text_muted"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/card_interface_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/mitr_bold"
+                        android:maxLines="1"
+                        android:textColor="@color/text_primary"
+                        android:textSize="12sp"
+                        tools:text="USB 2.0" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

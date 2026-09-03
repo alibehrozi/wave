@@ -1,3 +1,54 @@
 <resources>
-    <string name="app_name">Wave</string>
+    <string name="app_name">Wave SDR</string>
+    <string name="Update">Update</string>
+    <string name="update_firmware">Update Now</string>
+    <string name="update_now">Update Now</string>
+    <string name="latest_firmware_version">Latest Firmware Version : </string>
+    <string name="configure">Configure</string>
+    <string name="unknown_device">Unknown Device</string>
+    <string name="hackrf_one_device">HackRF One</string>
+    <string name="rad1o_device">rad1o</string>
+    <string name="jawbreaker_device">HackRF Jawbreaker</string>
+    <string name="dfu_mode_device">DFU Mode Device</string>
+    <string name="serial_number">Serial Number</string>
+    <string name="not_available">N/A</string>
+    <string name="board_info">Board Info</string>
+    <string name="error_retrieving_info">Error retrieving board info</string>
+    <string name="board_id">Board ID</string>
+    <string name="firmware_version">Firmware Version</string>
+    <string name="part_id">Part ID</string>
+    <string name="hardware_revision">Hardware Revision</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="opening_firmware_update">Opening Firmware Update…</string>
+    <string name="usb_error_prefix">USB Error: </string>
+    <string name="show_more_details">Show more details</string>
+    <string name="show_less_details">Show less details</string>
+    <string name="usb_api_version">USB API Version</string>
+    <string name="platform_compatibility">Platform Compatibility</string>
+    <string name="cpld_checksum">CPLD Checksum</string>
+    <string name="libhackrf_version">LibHackRF Version</string>
+    <string name="usb_speed">USB Speed</string>
+    <string name="usb_bus">USB Bus</string>
+
+    <!-- Dashboard & Tools Strings -->
+    <string name="rf_tools_and_presets">RF Tools &amp; Presets</string>
+    <string name="quick_modes">Quick Modes</string>
+    <string name="spectrum_analyzer">Spectrum &amp; Waterfall</string>
+    <string name="spectrum_analyzer_desc">Real-time wideband FFT</string>
+    <string name="signal_transmitter">Signal Transmitter</string>
+    <string name="signal_transmitter_desc">IQ synthesis &amp; modulation</string>
+    <string name="filter_all">All</string>
+    <string name="filter_receive">Receive</string>
+    <string name="filter_transmit">Transmit</string>
+    <string name="filter_analysis">Analysis</string>
+    <string name="filter_security">Security</string>
+
+    <!-- Card List Strings -->
+    <string name="connected_devices">Connected SDR Hardware</string>
+    <string name="no_devices_connected">No SDR Devices Connected</string>
+    <string name="no_devices_subtitle">Connect a HackRF, rad1o, or compatible USB SDR device to start streaming.</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_ready">Ready</string>
+    <string name="action_info">Device Info</string>
+    <string name="action_settings">Settings</string>
 </resources>

@@ -7,6 +7,9 @@ dependencies {
     implementation libs.activity
     implementation libs.material
 
+    // MicroDSP Module
+    implementation project(':microdsp')
+
     // Unit Testing
     testImplementation libs.junit
 
