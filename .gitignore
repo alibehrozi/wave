@@ -5,8 +5,9 @@
 # Gradle local configuration
 local.properties
 
-# Android Studio / IntelliJ IDEA
+# Android Studio / IntelliJ IDEA / VS Code
 .idea/
+.vscode/
 *.iml
 *.ipr
 *.iws
