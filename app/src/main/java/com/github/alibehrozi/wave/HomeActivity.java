@@ -29,5 +29,9 @@ public class HomeActivity extends ComponentActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // System permissions and power optimization
+        PermissionManager.getInstance().requestNotificationPermission(this);
+        PerformanceManager.getInstance(this).requestIgnoreBatteryOptimizations(this);
     }
 }

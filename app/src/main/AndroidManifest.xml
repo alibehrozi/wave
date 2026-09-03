@@ -3,6 +3,9 @@
     android:installLocation="auto">
 
     <!-- Permissions -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -24,5 +27,8 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="android.app.performance_mode"
+            android:value="high" />
     </application>
 </manifest>
