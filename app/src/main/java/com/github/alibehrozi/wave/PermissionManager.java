@@ -19,6 +19,7 @@ public final class PermissionManager {
     public static final int REQUEST_CODE_POST_NOTIFICATIONS = 1001;
     public static final int REQUEST_CODE_RECORD_AUDIO = 1002;
     public static final int REQUEST_CODE_APP_PERMISSIONS = 1003;
+    public static final int REQUEST_CODE_LOCATION = 1004;
 
     private static PermissionManager instance;
 
@@ -90,6 +91,38 @@ public final class PermissionManager {
                         REQUEST_CODE_POST_NOTIFICATIONS
                 );
             }
+        }
+    }
+
+    /**
+     * Checks if location permission (ACCESS_FINE_LOCATION or ACCESS_COARSE_LOCATION) is granted.
+     *
+     * @param context Application or Activity context.
+     * @return true if location permission is granted.
+     */
+    public boolean hasLocationPermission(@NonNull Context context) {
+        return ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED;
+    }
+
+    /**
+     * Requests location permissions (ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION) if not already granted.
+     *
+     * @param activity Calling activity to display permission prompt.
+     */
+    public void requestLocationPermission(@NonNull Activity activity) {
+        if (!hasLocationPermission(activity)) {
+            Log.i(TAG, "Requesting LOCATION permission");
+            ActivityCompat.requestPermissions(
+                    activity,
+                    new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    },
+                    REQUEST_CODE_LOCATION
+            );
         }
     }
 }

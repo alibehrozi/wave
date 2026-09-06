@@ -1,5 +1,6 @@
 package com.github.alibehrozi.wave;
 
+import android.content.Intent;
 import android.hardware.usb.UsbDevice;
 import android.os.Bundle;
 import android.util.Log;
@@ -221,7 +222,11 @@ public class HomeActivity extends ComponentActivity {
     }
 
     private void onDashboardToolClicked(@NonNull DashboardToolItem tool) {
-        Toast.makeText(this, "Launching " + tool.getName() + " (" + tool.getFrequency() + ")", Toast.LENGTH_SHORT).show();
+        if ("adsb".equalsIgnoreCase(tool.getId()) || tool.getName().toLowerCase().contains("ads-b") || tool.getName().toLowerCase().contains("aircraft")) {
+            startActivity(new Intent(this, AdsbActivity.class));
+        } else {
+            Toast.makeText(this, "Launching " + tool.getName() + " (" + tool.getFrequency() + ")", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setupDeviceList() {

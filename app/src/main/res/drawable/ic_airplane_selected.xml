@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+    <!-- Outer radar target ring -->
+    <path
+        android:strokeColor="@color/adsb_radar_cyan"
+        android:strokeWidth="1.5"
+        android:fillColor="#3300E5FF"
+        android:pathData="M18,3 A15,15 0 1,0 18,33 A15,15 0 1,0 18,3 Z" />
+    <!-- Aircraft silhouette centered at (18, 18) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M27,22v-2l-8,-5V9.5C19,8.67 18.33,8 17.5,8S16,8.67 16,9.5V15l-8,5v2l8,-2.5V25l-2,1.5V28l3.5,-1 3.5,1v-1.5L19,25v-5.5L27,22z" />
+</vector>

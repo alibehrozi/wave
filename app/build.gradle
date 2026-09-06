@@ -7,6 +7,9 @@ dependencies {
     implementation libs.activity
     implementation libs.material
 
+    // OpenStreetMap
+    implementation libs.osmdroid.android
+
     // MicroDSP Module
     implementation project(':microdsp')
 

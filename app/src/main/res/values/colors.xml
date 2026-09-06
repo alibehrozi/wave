@@ -55,6 +55,16 @@
     <color name="accent_teal">#057A88</color>
     <color name="accent_pink">#BF3989</color>
 
+    <!-- ADS-B Aviation Radar Colors -->
+    <color name="adsb_radar_cyan">#0288D1</color>
+    <color name="adsb_altitude_high">#0284C7</color>
+    <color name="adsb_altitude_mid">#0D9488</color>
+    <color name="adsb_altitude_low">#D97706</color>
+    <color name="adsb_emergency">#DC2626</color>
+    <color name="adsb_map_pill_bg">#E6FFFFFF</color>
+    <color name="adsb_map_pill_stroke">#D0D7DE</color>
+    <color name="adsb_map_control_bg">#F6F8FA</color>
+
     <!-- Button Updates -->
     <color name="btn_update_bg">#F9CE2E</color>
     <color name="btn_update_box_bg">#EABA09</color>

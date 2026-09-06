@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Selected Aircraft Tactical Detail Bottom Sheet / Floating Card -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardAircraftDetails"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/bg_sheet_container"
+    android:clickable="true"
+    android:focusable="true"
+    android:elevation="12dp"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:visibility="gone">
+
+    <!-- Detail Header: Callsign, Airline, Type Badge, and Close Button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_detail_heading"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="Heading"
+            android:src="@drawable/ic_airplane" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_detail_callsign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mitr_bold"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    tools:text="UAL123" />
+
+                <TextView
+                    android:id="@+id/tv_detail_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_aircraft_type_badge"
+                    android:fontFamily="@font/mitr_regular"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="1dp"
+                    android:textColor="@color/text_accent"
+                    android:textSize="11sp"
+                    tools:text="B789" />
+
+                <TextView
+                    android:id="@+id/tv_detail_icao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/mitr_regular"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp"
+                    tools:text="ICAO: A1B2C3" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_detail_airline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_regular"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                tools:text="United Airlines" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnCloseDetails"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Close"
+            android:src="@drawable/ic_close" />
+    </LinearLayout>
+
+    <!-- Route Indicator Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_hud_tile"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:id="@+id/tv_detail_origin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mitr_bold"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            tools:text="JFK" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="✈ ➔"
+            android:textColor="@color/adsb_radar_cyan"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_detail_destination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mitr_bold"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            tools:text="LAX" />
+    </LinearLayout>
+
+    <!-- Detailed Metrics Grid (4 columns) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <!-- Altitude & Rate -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_regular"
+                android:text="Altitude"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_detail_altitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_bold"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                tools:text="36,000 ft" />
+
+            <TextView
+                android:id="@+id/tv_detail_vrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_regular"
+                android:textColor="@color/status_green"
+                android:textSize="10sp"
+                tools:text="+1,200 fpm" />
+        </LinearLayout>
+
+        <!-- Speed -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_regular"
+                android:text="Ground Speed"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_detail_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_bold"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                tools:text="480 kts" />
+
+            <TextView
+                android:id="@+id/tv_detail_speed_kmh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_regular"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                tools:text="889 km/h" />
+        </LinearLayout>
+
+        <!-- Heading & Track -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_regular"
+                android:text="Track"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_detail_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/mitr_bold"
+                android:singleLine="true"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                tools:text="270°" />
+
+            <TextView
+                android:id="@+id/tv_detail_heading_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/mitr_regular"
+                android:singleLine="true"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                tools:text="Dir: W" />
+        </LinearLayout>
+
+        <!-- Squawk & Distance -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mitr_regular"
+                android:text="Transponder"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_detail_squawk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/mitr_bold"
+                android:singleLine="true"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                tools:text="SQ 1200" />
+
+            <TextView
+                android:id="@+id/tv_detail_squawk_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/mitr_regular"
+                android:singleLine="true"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                tools:text="Mode-S" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Dedicated Full-Width Coordinates & Range Telemetry Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_hud_tile"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="7dp">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:contentDescription="Coordinates"
+            android:src="@drawable/ic_radar_range"
+            app:tint="@color/adsb_radar_cyan" />
+
+        <TextView
+            android:id="@+id/tv_detail_coords"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:fontFamily="@font/mitr_regular"
+            android:singleLine="true"
+            android:textColor="@color/text_primary"
+            android:textSize="11sp"
+            tools:text="41.096° N • 74.150° W" />
+
+        <TextView
+            android:id="@+id/tv_detail_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/mitr_regular"
+            android:singleLine="true"
+            android:textColor="@color/text_accent"
+            android:textSize="11sp"
+            tools:text="14.2 nmi away" />
+    </LinearLayout>
+
+    <!-- Action Button: Track on Map -->
+    <LinearLayout
+        android:id="@+id/btn_track_on_map"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_chip_selected"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="Track"
+            android:src="@drawable/ic_my_location"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/mitr_regular"
+            android:text="Center on Radar Map"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

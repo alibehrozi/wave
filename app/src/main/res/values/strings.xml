@@ -51,4 +51,19 @@
     <string name="status_ready">Ready</string>
     <string name="action_info">Device Info</string>
     <string name="action_settings">Settings</string>
+
+    <!-- ADS-B Strings -->
+    <string name="adsb_title">ADS-B Flight Radar</string>
+    <string name="adsb_subtitle">1090 MHz Mode-S Transponder Receiver</string>
+    <string name="adsb_tracked_aircraft">Tracked Aircraft</string>
+    <string name="adsb_search_hint">Search callsign, airline, route, squawk…</string>
+    <string name="adsb_filter_all">All Flights</string>
+    <string name="adsb_filter_cruise">Cruise (&gt;30k ft)</string>
+    <string name="adsb_filter_low">Low (&lt;15k ft)</string>
+    <string name="adsb_filter_fast">Fast (&gt;400 kts)</string>
+    <string name="adsb_filter_emergency">Squawk Alert</string>
+    <string name="adsb_msg_rate">Msg/s</string>
+    <string name="adsb_max_alt">Max Alt</string>
+    <string name="adsb_closest">Closest</string>
+    <string name="adsb_live_rx">1090 MHz • LIVE RX</string>
 </resources>

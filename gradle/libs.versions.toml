@@ -10,6 +10,9 @@ annotation = "1.10.0"
 # Google Material Design
 material = "1.14.0"                   # Material Design Components
 
+# OpenStreetMap
+osmdroid = "6.1.20"
+
 # Testing Libraries
 junit = "4.13.2"                      # JUnit 4
 junitVersion = "1.3.0"                # AndroidX JUnit Extensions
@@ -23,6 +26,9 @@ annotation = { group = "androidx.annotation", name = "annotation", version.ref =
 
 # Google
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# OpenStreetMap
+osmdroid-android = { group = "org.osmdroid", name = "osmdroid-android", version.ref = "osmdroid" }
 
 # Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }
