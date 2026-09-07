@@ -36,7 +36,7 @@ void JavaSink::reset() {
 
 bool JavaSink::is_ready() {
     Port* in = get_input_port(0);
-    return is_active() && in && in->read_available() > 0;
+    return is_active() && in && in->read_available() > 0 && interop_buffer_->write_available() > 0;
 }
 
 void JavaSink::work() {

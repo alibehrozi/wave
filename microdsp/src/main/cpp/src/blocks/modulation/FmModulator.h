@@ -24,6 +24,7 @@ public:
 
     void work() override;
     void reset() override;
+    bool is_ready() override;
 
     void set_sensitivity(float sensitivity);
 

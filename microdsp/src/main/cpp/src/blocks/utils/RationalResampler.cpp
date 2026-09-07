@@ -77,7 +77,11 @@ void RationalResampler::work() {
     size_t available = in->get_buffer()->read_available();
     if (available < static_cast<size_t>(decimation_)) return;
 
-    size_t n_to_read = std::min(available, MAX_RESAMPLE_CHUNK);
+    size_t max_chunk = MAX_RESAMPLE_CHUNK;
+    if (interpolation_ > decimation_) {
+        max_chunk = std::max(static_cast<size_t>(decimation_), (MAX_RESAMPLE_CHUNK * decimation_) / interpolation_);
+    }
+    size_t n_to_read = std::min(available, max_chunk);
     n_to_read = (n_to_read / decimation_) * decimation_;
     if (n_to_read == 0) return;
 

@@ -70,6 +70,8 @@ private:
     SignalType signal_type_;
     double phase_;
     double phase_inc_;
+    std::vector<float> float_buf_;
+    std::vector<std::complex<float>> complex_buf_;
 
     /**
      * Internal generation helper

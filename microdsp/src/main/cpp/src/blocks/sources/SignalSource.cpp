@@ -10,6 +10,8 @@ SignalSource::SignalSource(DataType type, double sample_rate, double frequency, 
 
     add_output_port("out", type);
     update_phase_inc();
+    float_buf_.resize(1024);
+    complex_buf_.resize(1024);
     LOGI("SignalSource created: %s, type: %d, freq: %f, amp: %f, signal_type: %d", name.c_str(), static_cast<int>(type), frequency, amplitude, static_cast<int>(signal_type));
 }
 
@@ -23,7 +25,9 @@ void SignalSource::reset() {
 }
 
 bool SignalSource::is_ready() {
-    return is_active();
+    if (!is_active()) return false;
+    Port* out = get_output_port(0);
+    return out && out->write_available() >= 128;
 }
 
 void SignalSource::work() {
@@ -32,17 +36,19 @@ void SignalSource::work() {
     Port* out = get_output_port(0);
     if (!out) return;
 
-    // Generate in chunks
-    constexpr size_t nitems = 1024;
+    size_t space = out->write_available();
+    if (space == 0) return;
+
+    size_t nitems = std::min(space, static_cast<size_t>(1024));
 
     if (type_ == DataType::FLOAT) {
-        std::vector<float> buffer(nitems);
-        generate(buffer.data(), nitems);
-        out->write(buffer.data(), nitems);
+        if (float_buf_.size() < nitems) float_buf_.resize(nitems);
+        generate(float_buf_.data(), nitems);
+        out->write(float_buf_.data(), nitems);
     } else if (type_ == DataType::COMPLEX_FLOAT) {
-        std::vector<std::complex<float>> buffer(nitems);
-        generate(buffer.data(), nitems);
-        out->write(buffer.data(), nitems);
+        if (complex_buf_.size() < nitems) complex_buf_.resize(nitems);
+        generate(complex_buf_.data(), nitems);
+        out->write(complex_buf_.data(), nitems);
     }
 }
 

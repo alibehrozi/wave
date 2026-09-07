@@ -30,7 +30,8 @@ void JavaSource::reset() {
 }
 
 bool JavaSource::is_ready() {
-    return is_active() && interop_buffer_->read_available() > 0;
+    Port* out = get_output_port(0);
+    return is_active() && interop_buffer_->read_available() > 0 && out && out->write_available() > 0;
 }
 
 void JavaSource::work() {

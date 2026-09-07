@@ -32,17 +32,28 @@ void FmModulator::reset() {
     phase_ = 0.0f;
 }
 
+bool FmModulator::is_ready() {
+    if (!is_active()) return false;
+    Port* in = get_input_port(0);
+    Port* out = get_output_port(0);
+    if (!in || !out) return false;
+    return in->read_available() > 0 && out->write_available() > 0;
+}
+
 void FmModulator::work() {
     if (!is_active()) return;
 
     Port* in = get_input_port(0);
     Port* out = get_output_port(0);
-    if (!in || !out || !in->get_buffer()) return;
+    if (!in || !out) return;
 
-    size_t available = in->get_buffer()->read_available();
+    size_t available = in->read_available();
     if (available == 0) return;
 
-    size_t nitems = std::min(available, MAX_INPUT_FM_CHUNK);
+    size_t write_space = out->write_available();
+    if (write_space == 0) return;
+
+    size_t nitems = std::min({available, write_space, MAX_INPUT_FM_CHUNK});
 
     if (in->read(in_buf_.data(), nitems)) {
         std::lock_guard<std::mutex> lock(mutex_);
