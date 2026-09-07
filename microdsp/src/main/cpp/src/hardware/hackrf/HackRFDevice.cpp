@@ -193,6 +193,7 @@ int HackRfDevice::getLnaGain() const {
 int HackRfDevice::setVgaGain(int gainDb) {
     if (!isConnected()) return -1;
     int result = hackrf_set_vga_gain(device_, gainDb);
+    hackrf_set_txvga_gain(device_, static_cast<uint32_t>(gainDb));
     if (result == HACKRF_SUCCESS) {
         vga_gain_ = gainDb;
         return 0;
