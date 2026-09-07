@@ -1036,6 +1036,43 @@ public class DspPipelineInstrumentedTest {
             fg.stop();
         }
     }
+
+    /**
+     * Test 28: Direct FM 1 kHz Test Tone Transmitter Pipeline
+     * SignalSource (1 kHz Sine @ 2 MSPS) -> FmModulator (sensitivity 0.2356) -> JavaSink (COMPLEX_FLOAT)
+     */
+    @Test
+    public void testFmTransmitTonePipeline() throws Exception {
+        try (SignalSource tone = new SignalSource(DataType.FLOAT, 2000000.0, 1000.0, 1.0, SignalSource.SignalType.SINE, "tone_src");
+             FmModulator mod = new FmModulator(0.2356f, "fm_mod");
+             JavaSink sink = new JavaSink(DataType.COMPLEX_FLOAT, BUFFER_CAPACITY, "sink");
+             Flowgraph fg = new Flowgraph("fg_tx_tone")) {
+
+            fg.connect(tone, mod);
+            fg.connect(mod, sink);
+            assertTrue(fg.start());
+
+            Thread.sleep(100);
+
+            ByteBuffer outBuf = createDirectFloatBuffer(2048 * 2);
+            int pulled = sink.pull(outBuf, 2048);
+            assertTrue("Tone transmitter should generate modulated IQ samples", pulled > 0);
+
+            FloatBuffer floats = outBuf.asFloatBuffer();
+            float maxI = 0.0f;
+            float maxQ = 0.0f;
+            for (int i = 0; i < pulled; i++) {
+                float I = floats.get();
+                float Q = floats.get();
+                maxI = Math.max(maxI, Math.abs(I));
+                maxQ = Math.max(maxQ, Math.abs(Q));
+            }
+            assertTrue("I component should be non-zero", maxI > 0.5f);
+            assertTrue("Q component should be non-zero", maxQ > 0.5f);
+
+            fg.stop();
+        }
+    }
 }
 
 
