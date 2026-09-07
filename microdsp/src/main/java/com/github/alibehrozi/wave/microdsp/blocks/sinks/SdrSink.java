@@ -26,11 +26,6 @@ public class SdrSink extends Block {
     private final SdrDevice device;
 
     /**
-     * Native handle to the C++ SdrSink block
-     */
-    private final long nativeBlockHandle;
-
-    /**
      * Constructs an SdrSink block.
      * @param device The SDR device to transmit samples through (must already be configured)
      * @throws NullPointerException if device is null
@@ -46,12 +41,12 @@ public class SdrSink extends Block {
 
         this.device = device;
 
-        this.nativeBlockHandle = nativeCreateSdrSink(
+        this.nativeHandle = nativeCreateSdrSink(
                 device.getNativeHandle(),
                 getName()
         );
 
-        if (this.nativeBlockHandle == 0) {
+        if (this.nativeHandle == 0) {
             throw new RuntimeException("Failed to create native SdrSink block");
         }
     }

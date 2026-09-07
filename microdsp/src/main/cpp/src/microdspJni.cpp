@@ -383,7 +383,7 @@ extern "C" JNIEXPORT jboolean JNICALL
 Java_com_github_alibehrozi_wave_microdsp_core_Block_nativeStart(JNIEnv* env, jobject thiz, jlong handle) {
     auto block = MicroDSP::get_instance().get_block(handle);
     if (block) {
-        bool result = block->start();
+        bool result = (block->start() == 0);
         LOGI("Block start %s for handle: %lld", result ? "succeeded" : "failed", handle);
         return result ? JNI_TRUE : JNI_FALSE;
     } else {

@@ -205,9 +205,14 @@ public class Flowgraph implements AutoCloseable {
                 return false;
             }
 
-            // Check if already connected
-            if (srcPortObj.isConnected()) {
-                notifyError("Source port already connected: " + srcPort);
+            // Check if this specific connection already exists
+            if (areConnected(srcBlock, srcPort, dstBlock, dstPort)) {
+                return true;
+            }
+
+            // Check for fan-in (destination INPUT port cannot be connected to multiple outputs)
+            if (dstPortObj.getDirection() == Port.Direction.INPUT && dstPortObj.isConnected()) {
+                notifyError("Destination INPUT port already connected: " + dstPort + " in block " + dstBlock.getName());
                 return false;
             }
 

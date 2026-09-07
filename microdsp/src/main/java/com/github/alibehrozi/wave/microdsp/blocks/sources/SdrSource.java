@@ -30,11 +30,6 @@ public class SdrSource extends Block {
     private final SdrDevice device;
 
     /**
-     * Native handle to the C++ SdrSource block
-     */
-    private final long nativeBlockHandle;
-
-    /**
      * Constructs an SdrSource block.
      * The output port type is automatically determined from the SDR device.
      * @param device The SDR device to receive samples from (must already be
@@ -53,11 +48,11 @@ public class SdrSource extends Block {
         this.device = device;
 
         // Create the native block, passing the data type
-        this.nativeBlockHandle = nativeCreateSdrSource(
+        this.nativeHandle = nativeCreateSdrSource(
                 device.getNativeHandle(),
                 getName());
 
-        if (this.nativeBlockHandle == 0) {
+        if (this.nativeHandle == 0) {
             throw new RuntimeException("Failed to create native SdrSource block for type");
         }
     }

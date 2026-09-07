@@ -263,7 +263,7 @@ void Flowgraph::start() {
     std::lock_guard<std::mutex> lock(mutex_);
 
     for (auto& block : blocks_) {
-        if (!block->start()) {
+        if (block->start() != 0) {
             LOGE("Failed to start block: %s", block->get_name().c_str());
             stop();
             return;
