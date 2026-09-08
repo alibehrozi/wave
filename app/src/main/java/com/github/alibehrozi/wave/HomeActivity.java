@@ -1,7 +1,9 @@
 package com.github.alibehrozi.wave;
 
+import android.content.Intent;
 import android.hardware.usb.UsbDevice;
 import android.os.Bundle;
+import com.github.alibehrozi.wave.walkie.WalkieTalkieActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -215,12 +217,18 @@ public class HomeActivity extends ComponentActivity {
                 Toast.makeText(this, "Spectrum & Waterfall mode activated", Toast.LENGTH_SHORT).show()
         );
 
-        cardModeTransmit.setOnClickListener(v ->
-                Toast.makeText(this, "Signal Transmitter mode activated", Toast.LENGTH_SHORT).show()
-        );
+        cardModeTransmit.setOnClickListener(v -> {
+            Intent intent = new Intent(this, WalkieTalkieActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void onDashboardToolClicked(@NonNull DashboardToolItem tool) {
+        if ("walkie".equalsIgnoreCase(tool.getId())) {
+            Intent intent = new Intent(this, WalkieTalkieActivity.class);
+            startActivity(intent);
+            return;
+        }
         Toast.makeText(this, "Launching " + tool.getName() + " (" + tool.getFrequency() + ")", Toast.LENGTH_SHORT).show();
     }
 

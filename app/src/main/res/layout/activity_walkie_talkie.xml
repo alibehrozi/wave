@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
+
+        <!-- Top Header Bar -->
+        <LinearLayout
+            android:id="@+id/layoutTopHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="12dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Back"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@color/text_primary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/mitr_bold"
+                android:text="Walkie Talkie"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp" />
+
+            <!-- Hardware Status Badge -->
+            <TextView
+                android:id="@+id/tvHardwareBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_connected"
+                android:fontFamily="@font/mitr_bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/status_green"
+                android:textSize="11sp"
+                android:visibility="gone"
+                tools:text="SDR READY" />
+
+            <!-- Settings Button (Matches Home Activity) -->
+            <ImageButton
+                android:id="@+id/btn_settings"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Settings"
+                android:src="@drawable/ic_settings_24"
+                android:tint="@color/text_secondary" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color" />
+
+        <!-- Band Filter Chips (Horizontal Scroll) -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/layout_filter_chips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipBandPmr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_walkie_chip_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/mitr_regular"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="PMR 446"
+                    android:textColor="@color/chip_text_selected"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/chipBandFrs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_walkie_chip_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/mitr_regular"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="FRS / GMRS"
+                    android:textColor="@color/chip_text_unselected"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/chipBand2m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_walkie_chip_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/mitr_regular"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="2m Amateur"
+                    android:textColor="@color/chip_text_unselected"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/chipBand70cm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_walkie_chip_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/mitr_regular"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="70cm Amateur"
+                    android:textColor="@color/chip_text_unselected"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/chipBandMarine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_walkie_chip_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/mitr_regular"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="VHF Marine"
+                    android:textColor="@color/chip_text_unselected"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/chipBandFm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_walkie_chip_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/mitr_regular"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="6dp"
+                    android:text="FM Radio"
+                    android:textColor="@color/chip_text_unselected"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Voice Effects Carousel Section Header (Matches Home Tools Section) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mitr_bold"
+                android:text="Voice Changer"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_voice_fx_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_frequency_chip"
+                android:fontFamily="@font/mitr_regular"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:text="6 Presets"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Voice Effects RecyclerView (Carousel in Home Tools Style) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_voice_effects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="16dp"
+            tools:itemCount="5"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_voice_effect"
+            tools:orientation="horizontal" />
+
+        <!-- Primary Frequency & Tuning Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_walkie_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Channel Badge & S-Meter Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvChannelBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_status_pill"
+                        android:fontFamily="@font/mitr_bold"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="PMR CH 1"
+                        android:textColor="@color/accent_blue"
+                        android:textSize="11sp" />
+
+                    <!-- FM Mode Toggle Chip (NFM / WFM) -->
+                    <TextView
+                        android:id="@+id/chipFmMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_frequency_chip"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/mitr_bold"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="NFM"
+                        android:textColor="@color/status_green"
+                        android:textSize="11sp" />
+
+                    <!-- S-Meter LED indicator -->
+                    <LinearLayout
+                        android:id="@+id/layoutSMeter"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mitr_regular"
+                            android:text="SIGNAL STRENGTH"
+                            android:textColor="@color/text_muted"
+                            android:textSize="9sp" />
+
+                        <ProgressBar
+                            android:id="@+id/progressSMeter"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="6dp"
+                            android:layout_marginTop="2dp"
+                            android:max="100"
+                            android:progress="20"
+                            android:progressTint="@color/status_green" />
+                    </LinearLayout>
+
+                    <!-- Direct Frequency Keypad Input -->
+                    <LinearLayout
+                        android:id="@+id/btnDirectFrequencyInput"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:contentDescription="Direct Frequency Input"
+                            android:src="@drawable/ic_tune"
+                            android:tint="@color/text_secondary" />
+                    </LinearLayout>
+
+                    <!-- Add Bookmark Star Button -->
+                    <ImageButton
+                        android:id="@+id/btnBookmarkCurrent"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="4dp"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Bookmark Frequency"
+                        android:src="@drawable/ic_star_24"
+                        android:tint="@color/text_muted" />
+
+                </LinearLayout>
+
+                <!-- Frequency Primary Display -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvFrequencyDisplay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mitr_bold"
+                        android:letterSpacing="0.02"
+                        android:text="446.006250 MHz"
+                        android:textColor="@color/text_primary"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <!-- Frequency Step Tuning Controls -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnStepMinus1M"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_frequency_chip"
+                        android:fontFamily="@font/mitr_bold"
+                        android:text="-1.0M"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btnStepMinus12k"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_frequency_chip"
+                        android:fontFamily="@font/mitr_bold"
+                        android:text="-12.5k"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btnStepPlus12k"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_frequency_chip"
+                        android:fontFamily="@font/mitr_bold"
+                        android:text="+12.5k"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btnStepPlus1M"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_frequency_chip"
+                        android:fontFamily="@font/mitr_bold"
+                        android:text="+1.0M"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- PTT Command Deck Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_walkie_ptt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="18dp">
+
+                <!-- Mode & TX Timer Badge -->
+                <TextView
+                    android:id="@+id/tvPttStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/mitr_bold"
+                    android:letterSpacing="0.08"
+                    android:text="• RX MONITORING •"
+                    android:textColor="@color/status_green"
+                    android:textSize="12sp" />
+
+                <!-- Massive Circular PTT Button -->
+                <RelativeLayout
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="4dp">
+
+                    <!-- Outer VU Ring Glow Indicator -->
+                    <View
+                        android:id="@+id/viewPttGlowRing"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_ptt_standby" />
+
+                    <!-- Core PTT Button -->
+                    <LinearLayout
+                        android:id="@+id/btnPtt"
+                        android:layout_width="136dp"
+                        android:layout_height="136dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/bg_ptt_standby"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/ivPttIcon"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:contentDescription="PTT Mic"
+                            android:src="@drawable/ic_mic_24"
+                            android:tint="@color/status_green" />
+
+                        <TextView
+                            android:id="@+id/tvPttActionText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/mitr_bold"
+                            android:letterSpacing="0.06"
+                            android:text="HOLD TO TALK"
+                            android:textColor="@color/text_primary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvTxTimer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mitr_regular"
+                            android:text="RELEASE FOR BEEP"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Squelch, CTCSS & Test Tone Controls Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_walkie_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Squelch Header Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/mitr_bold"
+                        android:text="SQUELCH THRESHOLD"
+                        android:textColor="@color/text_primary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvSquelchLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mitr_bold"
+                        android:text="SQL: -50dB"
+                        android:textColor="@color/accent_blue"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Squelch Slider -->
+                <SeekBar
+                    android:id="@+id/seekSquelch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:max="60"
+                    android:progress="30"
+                    android:progressTint="@color/accent_blue"
+                    android:thumbTint="@color/accent_blue" />
+
+                <!-- Quick Functional Toggles (CTCSS & Test Tone) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/chipCtcss"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_frequency_chip"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/mitr_bold"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="8dp"
+                        android:text="CTCSS: OFF"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/btnTxTestTone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1.2"
+                        android:background="@drawable/bg_frequency_chip"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/mitr_bold"
+                        android:gravity="center"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="8dp"
+                        android:text="⚡ 1 kHz TEST TONE"
+                        android:textColor="@color/accent_orange"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Saved Channels & Bookmarks Section Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/mitr_bold"
+                android:text="Saved Channels"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btnAddBookmarkQuick"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/badge_connected"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/mitr_bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="+ Add"
+                android:textColor="@color/status_green"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Saved Channels Carousel Container -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/layoutBookmarksContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

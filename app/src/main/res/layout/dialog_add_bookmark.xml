@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/dialog_card_bg"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bookmark Frequency"
+        android:textColor="@color/text_primary"
+        android:textSize="17sp"
+        android:fontFamily="@font/mitr_bold" />
+
+    <TextView
+        android:id="@+id/tvDialogFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="446.0062 MHz"
+        android:textColor="@color/accent_blue"
+        android:textSize="13sp"
+        android:fontFamily="@font/mitr_regular" />
+
+    <EditText
+        android:id="@+id/etBookmarkName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/bg_walkie_card"
+        android:hint="Channel Name (e.g. Camp 1, Lead)"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_muted"
+        android:textSize="13sp"
+        android:fontFamily="@font/mitr_regular"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:inputType="textCapWords"
+        android:maxLines="1" />
+
+</LinearLayout>
