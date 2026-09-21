@@ -34,7 +34,7 @@ import java.util.List;
 public class HomeActivity extends ComponentActivity {
 
     private static final String TAG = "HomeActivity";
-    private static final int GRID_COLUMN_COUNT = 3;
+    private static final int GRID_COLUMN_COUNT = 2;
 
     // Adapters & Layout Managers
     private SdrDeviceAdapter deviceAdapter;

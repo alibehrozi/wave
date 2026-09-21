@@ -68,6 +68,21 @@ public final class DashboardPresetsProvider {
                 10e6
         ));
 
+        // 4. IQ Signal Editor & Cutter (Electric Cyan)
+        presets.add(new DashboardToolItem(
+                "iq_editor",
+                "IQ Signal Editor",
+                "Time / Spectrum",
+                "Cut & Edit",
+                DashboardToolItem.Category.ANALYSIS,
+                "EDIT",
+                R.drawable.ic_content_cut_24,
+                Color.parseColor("#06B6D4"),
+                "Cut, trim, crop, silence and edit recorded I/Q signals",
+                0.0,
+                2e6
+        ));
+
         // 4. Signal Transmitter (Solar Amber / Orange)
         presets.add(new DashboardToolItem(
                 "transmitter",
